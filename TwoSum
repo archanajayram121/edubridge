@@ -1,0 +1,42 @@
+#Algorithm
+Start
+Declare three variables, say num1, num2, and sum.
+Read the value of num1 from the user.
+Read the value of num2 from the user.
+Calculate the sum: sum = num1 + num2.
+Display the value of sum.
+ Stop
+
+
+#pseudocode
+START
+  DECLARE num1, num2, sum AS INTEGER
+  
+  PRINT "Enter the first number: "
+  READ num1
+  
+  PRINT "Enter the second number: "
+  READ num2
+  
+  SET sum = num1 + num2
+  
+  PRINT "The sum is: ", sum
+END
+
+
+#c program
+#include <stdio.h> 
+
+int main() { 
+    int num1; 
+    int num2; 
+    int sum;  
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+    sum = num1 + num2;
+    printf("The sum of %d and %d is: %d\n", num1, num2, sum);
+
+    return 0; 
