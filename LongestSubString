@@ -1,0 +1,65 @@
+#Algorithm:
+1. Initialize two pointers, start and end, to the beginning of the string.
+2. Initialize a set to store unique characters in the current substring.
+3. Iterate through the string using the end pointer.
+4. For each character, check if it is already in the set.
+5. If the character is not in the set, add it to the set and update the maximum length of the substring if necessary.
+6. If the character is in the set, remove characters from the start of the substring (using the start pointer) until the repeating character is removed from the set.
+7. Update the maximum length of the substring if necessary.
+
+#Pseudocode:
+function LongestSubstringWithoutRepeatingChars(str)
+  start = 0
+  end = 0
+  maxLen = 0
+  charSet = new Set()
+
+  While end < length(str)
+    If charSet contains str[end]
+      Remove str[start] from charSet
+      start = start + 1
+    Else
+      Add str[end] to charSet
+      maxLen = max(maxLen, end - start + 1)
+      end = end + 1
+
+  Return maxLen
+End function
+
+#C Program:
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+#define MAX_LEN 100
+int longestSubstringWithoutRepeatingChars(char *str) {
+  int start = 0;
+  int end = 0;
+  int maxLen = 0;
+  bool charSet[MAX_LEN];
+
+  memset(charSet, false, MAX_LEN);
+
+  while (str[end] != '\0') {
+    if (charSet[str[end]]) {
+      charSet[str[start]] = false;
+      start++;
+    } else {
+      charSet[str[end]] = true;
+      maxLen = (maxLen > (end - start + 1)) ? maxLen : (end - start + 1);
+      end++;
+    }
+  }
+
+  return maxLen;
+}
+
+int main() {
+  char str[MAX_LEN];
+  printf("Enter a string: ");
+  scanf("%s", str);
+  int len = longestSubstringWithoutRepeatingChars(str);
+  printf("Length of the longest substring without repeating characters: %d\n", len);
+
+  return 0;
+}
